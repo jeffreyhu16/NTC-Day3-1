@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <personal-form></personal-form>
+        <address-form></address-form> -->
+
+        <keep-alive>
+            <component :is="currentTab" @set-page="updatePage" @update="updateInfo" :form-data="computedForm"></component>
+        </keep-alive>
+    </div>
+
+    <script type="text/x-template" id="form1">
+        <div>姓名<input type="text" v-model="name"></div>
+        <div>電話<input type="text" v-model="number"></div>
+        <button @click="nextPage">下一步</button>
+    </script>
+
+    <script type="text/x-template" id="form2">
+        <div>地址<input type="text" v-model="address"></div>
+        <button @click="previousPage">上一步</button>
+        <button @click="nextPage">下一步</button>
+    </script>
+
+    <script type="text/x-template" id="form3">
+        <label>您的資料</label>
+        <div>{{ formData.name }}</div>
+        <div>{{ formData.number }}</div>
+        <div>{{ formData.address }}</div>
+        <button @click="previousPage">上一步</button>
+    </script>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="index.js"></script>
+</body>
+</html>
